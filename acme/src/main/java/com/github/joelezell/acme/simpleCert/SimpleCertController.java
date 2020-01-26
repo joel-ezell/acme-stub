@@ -1,4 +1,4 @@
-package com.github.joelezell.acme;
+package com.github.joelezell.acme.simpleCert;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
+
+import com.github.joelezell.acme.AcmeApplication;
 
 @RestController
 public class SimpleCertController {

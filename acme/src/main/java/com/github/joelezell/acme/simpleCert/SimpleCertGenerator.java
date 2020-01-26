@@ -1,4 +1,4 @@
-package com.github.joelezell.acme;
+package com.github.joelezell.acme.simpleCert;
 
 public abstract class SimpleCertGenerator {
     private static final int DELAY = 10000;
