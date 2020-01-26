@@ -9,7 +9,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 public class CertRequest {
     private final String domain;
     
-    // If doing production code, I would probably use a builder pattern rather than have a long public constructor signature like this.
     @JsonCreator
     public CertRequest(String domain) {
         this.domain = domain;

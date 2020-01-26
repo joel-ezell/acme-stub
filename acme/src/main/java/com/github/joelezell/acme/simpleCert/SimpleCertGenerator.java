@@ -11,12 +11,13 @@ public abstract class SimpleCertGenerator {
         Thread.sleep(DELAY);
         
         if (domain == "") {
+            // More input validation would be done here in production.
             throw new IllegalArgumentException("Null domain received");
         }
         
         // Attach the expiration time to the end of the returned string. A true X.509 certificate has the "Not Before" and "Not After"
-        // timestamps included in the signed document.
-        
+        // timestamps included in the signed document. It would probably make sense in production to keep track of all issued and currently valid certificates
+        // in a database, with a scheduled job to remove the expired certificates. Things like the validation method could be tracked there.
         return "foo-" + domain + "-expires-" + (System.currentTimeMillis() + VALIDITY_PERIOD_MILLIS);
     }
     

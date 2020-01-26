@@ -14,7 +14,12 @@ public class SimpleCertController {
     @GetMapping("/cert/{domain}")
     public DeferredResult<ResponseEntity<String>> greeting(@PathVariable String domain) {
 
+        // The very first thing that would be done in a production service is authorization. It is critical to verify that the requester is 
+        // a legitimate client that is authorized to receive a signed certificate for the given domain. The Acme protocol / framework does a
+        // very good job of this. 401 Unauthorized would be sent if there's a violation.
         DeferredResult<ResponseEntity<String>> result = new DeferredResult<ResponseEntity<String>>();
+        
+        // Move to executor thread for this long-running operation to free up the container thread.
         AcmeApplication.getExecutor().execute(() -> {
             ResponseEntity<String> response;
             try {

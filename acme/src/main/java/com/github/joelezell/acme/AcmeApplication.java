@@ -33,7 +33,6 @@ public class AcmeApplication {
 	    return executor;
 	}
 	
-	//TODO: Does this only get started upon receipt of the first request?
 	// It would probably be good to use the @Async annotation in production for this long-running operation.
     @Scheduled(fixedRate = SimpleCertGenerator.VALIDITY_PERIOD_MILLIS - (60*1000))
     public static void refreshCert()

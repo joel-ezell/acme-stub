@@ -12,6 +12,7 @@ public abstract class CertGenerator {
         
         String domain = request.getDomain();
         if (domain.contentEquals("")) {
+            // More input validation would be done here in production.
             throw new IllegalArgumentException("Domain must be specified");
         }
         
@@ -23,6 +24,7 @@ public abstract class CertGenerator {
                 System.currentTimeMillis(),
                 System.currentTimeMillis() + VALIDITY_PERIOD_MILLIS);
         
+        // It would probably make sense in production to keep track of all issued and currently valid certificates in a database, with a scheduled job to remove the expired certificates. Things like the validation method could be tracked there.
         return response;
     }
     
